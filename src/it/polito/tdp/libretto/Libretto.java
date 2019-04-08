@@ -24,7 +24,7 @@ public class Libretto {
 					
 				return temp;
 			}
-	
+	// c'è già una funzione di libreria che fa tutto questo, sotto implemento il metodo
 	public Voto CercaEsame (String corso) {
 		for (Voto v: this.voti) {
 			if(v.getCorso().equals(corso))
@@ -33,6 +33,48 @@ public class Libretto {
 				return v;
 		}
 	    return null;
+	   
+	}
+	
+	public Voto cercaEsame(String corso) {
+		//alla funzione indexOf dobbiamo passare lo stesso oggetto che forma la lista in cui
+		//lo stiamo cercando quindi creo un voto fittizioo
+		
+		Voto temp= new Voto (0, corso, null);
+		int pos= voti.indexOf(temp);
+		if(pos ==-1)
+			return null;
+		else
+			return this.voti.get(pos);
+	}
+	
+	
+	// Per far si che non ci siano esami ripetuti, la cosa piu' giusta da fare
+	// e' semplicimente vedere se esiste già il nome del corso, perchè tutti gli altri
+	// campi possono essere uguali (voti, date)
+	
+	public boolean EsisteVoto(Voto v) {
+		int pos= voti.indexOf(v);
+		if(pos==-1)
+			return false;
+		else 
+			if (v.getPunti()==voti.get(pos).getPunti())
+				return true;
+			else
+				return false;
+//  lo stesso metodo è implementato sopra con indexOf
+//	Voto trovato= CercaEsame(v.getCorso());
+//		if(trovato==null)
+//			return false;
+//		
+//		if(v.getPunti()==trovato.getPunti())
+//			return true;
+//		
+//		else
+//			return false;
+//		
+	}
 
-}
+	
+	
 }
