@@ -35,8 +35,15 @@ public class TestLibretto {
 	System.out.format("Il voto %s e' %s\n", sbagliato.toString(), libr.EsisteVoto(sbagliato));
 	System.out.format("Il voto %s e' %s\n", merendine.toString(), libr.EsisteVoto(merendine));
 
+	System.out.format("Il voto %s e'in conflitto %s\n", giusto.toString(), libr.votoInConflitto(giusto));
+	System.out.format("Il voto %s e' in conflitto %s\n", sbagliato.toString(), libr.votoInConflitto(sbagliato));
+	System.out.format("Il voto %s e' in confitto %s\n", merendine.toString(), libr.votoInConflitto(merendine));
+	
+	libr.add(giusto);
+	libr.add(sbagliato);
+	libr.add(merendine);
 
-	
-	
+
+
 	}
 }

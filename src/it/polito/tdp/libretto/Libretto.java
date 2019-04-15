@@ -12,8 +12,12 @@ public class Libretto {
 		this.voti= new ArrayList <Voto>();
 	}
 	
-	public void add(Voto v) {
-		voti.add(v);
+	public boolean add(Voto v) {
+		if(!this.EsisteVoto(v)&&!this.votoInConflitto(v)) {
+			voti.add(v);
+			return true;}
+		else 
+			return false;
 	}
 	
 	public List <Voto> StampaVoti(int punti) {
@@ -62,6 +66,8 @@ public class Libretto {
 				return true;
 			else
 				return false;
+		
+	}
 //  lo stesso metodo è implementato sopra con indexOf
 //	Voto trovato= CercaEsame(v.getCorso());
 //		if(trovato==null)
@@ -73,6 +79,16 @@ public class Libretto {
 //		else
 //			return false;
 //		
+	public boolean votoInConflitto(Voto v) {
+		int pos= voti.indexOf(v);
+		if(pos==-1)
+			return false;
+		else 
+			if (v.getPunti()==voti.get(pos).getPunti())
+				return false;
+			else
+				return true;
+		
 	}
 
 	
